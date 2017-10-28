@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as enzyme from 'enzyme';
 import * as THREE from 'three';
 
-import User, { UserProps } from './User';
+import User, { UserProps, createUser } from './User';
 
 const userProps: UserProps = {
   id: '10000',
@@ -11,7 +11,14 @@ const userProps: UserProps = {
   faceTo: [1, 0, 0]
 };
 
-describe('User 渲染', () => {
+describe('User Threejs 调用', () => {
+  test('createUser 方法应该正确执行', () => {
+    const mesh = createUser(1, [1, 1, 0]);
+    expect(mesh.position).toEqual(new THREE.Vector3(1, 1, 0));
+  });
+});
+
+describe('User 组件渲染', () => {
   test('要能正确的创建模型', () => {
     const scene = new THREE.Scene();
     const wrapper = enzyme.shallow(<User scene={scene} {...userProps} />);

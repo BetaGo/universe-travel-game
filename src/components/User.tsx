@@ -12,10 +12,12 @@ type Props = UserProps & {
   scene: THREE.Scene
 };
 
-function createUser(size: number) {
+export function createUser(size: number, position: [number, number, number]) {
   const userGeo = new THREE.SphereGeometry(size, 9, 9);
   const material = new THREE.MeshPhongMaterial();
   const mesh = new THREE.Mesh(userGeo, material);
+  const [x, y, z] = position;
+  mesh.position.set(x, y, z);
   return mesh;
 }
 
@@ -23,7 +25,7 @@ class User extends React.Component<Props> {
   userMesh: THREE.Mesh;
   
   componentWillMount() {
-    this.userMesh = createUser(1);
+    this.userMesh = createUser(1, this.props.position);
   }
   componentDidMount() {
     this.props.scene.add(this.userMesh);

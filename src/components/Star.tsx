@@ -16,10 +16,12 @@ type Props = StarProps & {
   scene: THREE.Scene
 };
 
-const createStar = (config: StarPhysicalInfo) => {
+export const createStar = (config: StarPhysicalInfo) => {
   const starGeo = new THREE.SphereGeometry(config.size);
   const material = new THREE.MeshLambertMaterial();
   const mesh = new THREE.Mesh(starGeo, material);
+  const [x, y, z] = config.position;
+  mesh.position.set(x, y, z);
 
   return mesh;
 };
