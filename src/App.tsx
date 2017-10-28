@@ -1,21 +1,19 @@
 import * as React from 'react';
-import Universe, { UserProps } from '../src/components/Universe';
+import Universe, { UniverseProps } from './components/Universe';
+import createScene from './hoc/createScene';
 import './App.css';
 
-const user: UserProps = {
-  position: [100, 200, 300],
-  faceTo: [1, 0, 1],
-  name: 'xiaoming'
+const universeProps: Partial<UniverseProps> = {
+  currentUser: {
+    id: '10000',
+    name: 'xiaomig',
+    position: [1000, 200, 100],
+    faceTo: [1, 0, 0],
+  }
 };
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Universe currentUser={user} />
-      </div>
-    );
-  }
-}
+const Enhanced = createScene()(Universe);
 
-export default App;
+const NewUniverse = () => <Enhanced {...universeProps} />;
+
+export default NewUniverse;

@@ -1,8 +1,39 @@
 import * as React from 'react';
+import * as THREE from 'three';
 
-class User extends React.Component {
+export interface UserProps {
+  id: string;
+  name: string;
+  position: [number, number, number];
+  faceTo: [number, number, number];
+}
+
+type Props = UserProps & {
+  scene: THREE.Scene
+};
+
+function createUser(size: number) {
+  const userGeo = new THREE.SphereGeometry(size, 9, 9);
+  const material = new THREE.MeshPhongMaterial();
+  const mesh = new THREE.Mesh(userGeo, material);
+  return mesh;
+}
+
+class User extends React.Component<Props> {
+  userMesh: THREE.Mesh;
+  
+  componentWillMount() {
+    this.userMesh = createUser(1);
+  }
+  componentDidMount() {
+    this.props.scene.add(this.userMesh);
+  }
+  componentWillUnmount() {
+    this.props.scene.remove(this.userMesh);
+  }
+
   render() {
-    return <div>hello</div>;
+    return null;
   }
 }
 
