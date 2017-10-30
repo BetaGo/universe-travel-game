@@ -4,19 +4,27 @@ import * as THREE from 'three';
 export interface UserProps {
   id: string;
   name: string;
-  position: [number, number, number];
-  faceTo: [number, number, number];
+  position: {
+    x: number,
+    y: number,
+    z: number
+  };
+  faceTo: {
+    x: number,
+    y: number,
+    z: number
+  };
 }
 
 type Props = UserProps & {
   scene: THREE.Scene
 };
 
-export function createUser(size: number, position: [number, number, number]) {
+export function createUser(size: number, position: {x: number, y: number, z: number}) {
   const userGeo = new THREE.SphereGeometry(size, 9, 9);
   const material = new THREE.MeshPhongMaterial();
   const mesh = new THREE.Mesh(userGeo, material);
-  const [x, y, z] = position;
+  const {x, y, z} = position;
   mesh.position.set(x, y, z);
   return mesh;
 }

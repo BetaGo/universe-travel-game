@@ -7,13 +7,13 @@ import User, { UserProps, createUser } from './User';
 const userProps: UserProps = {
   id: '10000',
   name: 'xiaoming',
-  position: [1, 2, 3],
-  faceTo: [1, 0, 0]
+  position: {x: 1, y: 2, z: 3},
+  faceTo: {x: 1, y: 0, z: 0}
 };
 
 describe('User Threejs 调用', () => {
   test('createUser 方法应该正确执行', () => {
-    const mesh = createUser(1, [1, 1, 0]);
+    const mesh = createUser(1, {x: 1, y: 1, z: 0});
     expect(mesh.position).toEqual(new THREE.Vector3(1, 1, 0));
   });
 });

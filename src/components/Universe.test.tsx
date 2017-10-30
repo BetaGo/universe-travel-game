@@ -16,8 +16,8 @@ describe('能渲染出一片寂静的宇宙', () => {
     currentUser: {
       id: '10000',
       name: 'xiaomig',
-      position: [1000, 200, 100],
-      faceTo: [1, 0, 0],
+      position: {x: 1000, y: 200, z: 100},
+      faceTo: {x: 1, y: 0, z: 0}
     }
   };
   test('能正确初始化', () => {

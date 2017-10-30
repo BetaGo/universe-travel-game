@@ -9,7 +9,11 @@ const starProps: StarProps = {
   name: 'x-1000',
   physicalInfo: {
     size: 10,
-    position: [1, 10, 100]
+    position: {
+      x: 1,
+      y: 10,
+      z: 100
+    }
   }
 };
 

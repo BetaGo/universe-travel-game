@@ -3,7 +3,11 @@ import * as THREE from 'three';
 
 export interface StarPhysicalInfo {
   size: number;
-  position: [number, number, number];
+  position: {
+    x: number,
+    y: number,
+    z: number
+  };
 }
 
 export interface StarProps {
@@ -20,7 +24,7 @@ export const createStar = (config: StarPhysicalInfo) => {
   const starGeo = new THREE.SphereGeometry(config.size);
   const material = new THREE.MeshLambertMaterial();
   const mesh = new THREE.Mesh(starGeo, material);
-  const [x, y, z] = config.position;
+  const {x, y, z} = config.position;
   mesh.position.set(x, y, z);
 
   return mesh;
