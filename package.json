@@ -6,6 +6,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts-ts": "2.8.0",
+    "socket.io-client": "^2.0.4",
     "three": "^0.87.1"
   },
   "scripts": {
@@ -17,12 +18,18 @@
   "devDependencies": {
     "@types/enzyme": "^3.1.1",
     "@types/jest": "^21.1.5",
+    "@types/nock": "^8.2.1",
     "@types/node": "^8.0.47",
     "@types/react": "^16.0.18",
     "@types/react-dom": "^16.0.2",
+    "@types/socket.io": "^1.4.31",
+    "@types/socket.io-client": "^1.4.31",
     "@types/three": "^0.84.27",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
-    "react-test-renderer": "^16.0.0"
+    "mock-socket": "^7.0.0",
+    "nock": "^9.0.27",
+    "react-test-renderer": "^16.0.0",
+    "socket.io": "^2.0.4"
   }
 }
