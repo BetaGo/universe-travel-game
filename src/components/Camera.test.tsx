@@ -16,7 +16,7 @@ describe('初次加载', () => {
       },
       lookAt: {
         x: 0,
-        y: 1,
+        y: 10,
         z: 0
       },
       camera: new THREE.Camera()
@@ -27,26 +27,6 @@ describe('初次加载', () => {
     expect(wrapper.state('position')).toEqual(cameraProps.position);
     expect(wrapper.state('lookAt')).toEqual(cameraProps.lookAt);
   });
-});
-
-describe('threejs 接口', () => {
-  let cameraProps: CameraProps;
-  beforeEach(() => {
-    cameraProps = {
-      position: {
-        x: 1,
-        y: 2,
-        z: 0
-      },
-      lookAt: {
-        x: 1,
-        y: 1,
-        z: 0
-      },
-      camera: new THREE.Camera()
-    };
-  });
-
   test('组件 position 状态应该能正确地传给接口', () => {
     const wrapper = enzyme.shallow(<Camera {...cameraProps}/>);
     expect(wrapper.instance().props.camera.position).toEqual(cameraProps.position);
@@ -65,3 +45,35 @@ describe('threejs 接口', () => {
     expect(direction.z).toBeCloseTo(currZ / currentDirectionLength);
   });
 });
+
+/*
+describe('组件状态变化', () => {
+  let cameraProps: CameraProps;
+  beforeEach(() => {
+    cameraProps = {
+      position: {
+        x: 1,
+        y: 2,
+        z: 0
+      },
+      lookAt: {
+        x: 1,
+        y: 1,
+        z: 0
+      },
+      camera: new THREE.Camera()
+    };
+  });
+  test('position 状态应同步给 threejs 的 camera', () => {
+    const position = {x: 100, y: 200, z: 300};
+    const wrapper = enzyme.shallow(<Camera {...cameraProps}/>);
+    wrapper.setState({
+      position
+    });
+    expect(wrapper.instance().props.camera.position).toEqual(position);
+  });
+  test('lookAt 状态应同步给 tgreejs 的 camera', () => {
+    const lookAt = {x: }
+  });
+});
+*/
